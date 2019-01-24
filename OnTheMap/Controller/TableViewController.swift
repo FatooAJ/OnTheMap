@@ -47,9 +47,8 @@ class TableViewController: UITableViewController {
     }
     @IBAction func logout(_ sender: Any) {
         api.deletingasession()
-        DispatchQueue.main.async() {
-            self.performSegue(withIdentifier: "Login", sender: self)
-        }
+        self.tabBarController?.dismiss(animated: true, completion: nil)
+
     }
     
     func mapNetworking(){
@@ -74,7 +73,7 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! TableViewCell
         let StudentCell = Student.studentInfoArray[indexPath.row]
         
-        cell.name!.text = "\(StudentCell.firstName as! String )"+" "+"\(StudentCell.lastName as! String)"
+        cell.name!.text = "\(StudentCell.firstName)"+" "+"\(StudentCell.lastName)"
         cell.link?.text = StudentCell.mediaURL
 
         return cell

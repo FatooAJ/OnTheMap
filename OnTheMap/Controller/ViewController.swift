@@ -39,9 +39,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
     }
     @IBAction func Logout(_ sender: Any) {
         api.deletingasession()
-        DispatchQueue.main.async() {
-            self.performSegue(withIdentifier: "Login", sender: self)
-        }
+
+        self.tabBarController?.dismiss(animated: true, completion: nil)
+
     }
     
     func mapNetworking(){
@@ -60,7 +60,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
             // used to create custom structs. Perhaps StudentLocation structs.
             
             for dictionary in locations {
-                
+                print(dictionary)
+
                 // Notice that the float values are being used to create CLLocationDegree values.
                 // This is a version of the Double type.
                 if dictionary["latitude"] != nil && dictionary["longitude"] != nil && dictionary["firstName"] != nil && dictionary["lastName"] != nil && dictionary["mediaURL"] != nil{
@@ -76,7 +77,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
                         // Here we create the annotation and set its coordiate, title, and subtitle properties
                         let annotation = MKPointAnnotation()
                         annotation.coordinate = coordinate
-                        annotation.title = "\(studentinfo.firstName as! String) \(studentinfo.lastName as! String)"
+                        annotation.title = "\(studentinfo.firstName) \(studentinfo.lastName)"
                         annotation.subtitle = studentinfo.mediaURL
                         
                         // Finally we place the annotation in an array of annotations.

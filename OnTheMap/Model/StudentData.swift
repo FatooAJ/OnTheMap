@@ -24,16 +24,16 @@ class StudentData{
 
     
     init (dictionary: NSDictionary) {
-        self.createdAt = dictionary["createdAt"] as! String
-        self.firstName = dictionary["firstName"] as! String
-        self.lastName = dictionary["lastName"] as! String
-        self.latitude = dictionary["latitude"] as! Double
-        self.longitude = dictionary["longitude"] as! Double
-        self.mapString = dictionary["mapString"] as! String
-        self.mediaURL = dictionary["mediaURL"] as! String
-        self.objectId = dictionary["objectId"] as! String
-        self.uniqueKey = dictionary["uniqueKey"] as! String
-        self.updatedAt = dictionary["updatedAt"] as! String
+        self.createdAt = dictionary["createdAt"] as? String
+        self.firstName = dictionary["firstName"] as? String
+        self.lastName = dictionary["lastName"] as? String
+        self.latitude = dictionary["latitude"] as? Double
+        self.longitude = dictionary["longitude"] as? Double
+        self.mapString = dictionary["mapString"] as? String
+        self.mediaURL = dictionary["mediaURL"] as? String
+        self.objectId = dictionary["objectId"] as? String
+        self.uniqueKey = dictionary["uniqueKey"] as? String
+        self.updatedAt = dictionary["updatedAt"] as? String
     }
     init () {
         self.createdAt = ""

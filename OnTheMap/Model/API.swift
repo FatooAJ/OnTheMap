@@ -67,6 +67,12 @@ class API {
             func displayError(_ error: String) {
                 print(error)
             }
+            
+            /* GUARD: Did we get a successful 2XX response? */
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+                displayError("Your request returned a status code other than 2xx!")
+                return
+            }
             /* GUARD: Was there an error? */
             guard (error == nil) else {
                 displayError("There was an error with your request: \(error!)")

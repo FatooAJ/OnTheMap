@@ -20,7 +20,8 @@ class StudentData{
     var objectId : String!
     var uniqueKey : String!
     var updatedAt : String!
-    
+    var studentInfoArray = [StudentData]()
+
     
     init (dictionary: NSDictionary) {
         self.createdAt = dictionary["createdAt"] as! String
@@ -45,6 +46,10 @@ class StudentData{
         self.objectId = ""
         self.uniqueKey = ""
         self.updatedAt = ""
+    }
+    func addStudent(studentinfo:StudentData){
+        self.studentInfoArray.append(studentinfo)
+
     }
     
 }

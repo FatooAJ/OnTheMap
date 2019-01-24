@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-u" translatesAutoresizingMaskIntoConstraints="NO" id="syW-cl-k7v">
-                                <rect key="frame" x="137" y="94" width="100" height="100"/>
+                                <rect key="frame" x="137.5" y="94" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="5gS-Sl-2wS"/>
                                     <constraint firstAttribute="height" constant="100" id="aGT-IR-IeM"/>
@@ -44,7 +44,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D4x-GU-MwY">
-                                <rect key="frame" x="62" y="352" width="250" height="40"/>
+                                <rect key="frame" x="62.5" y="352" width="250" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="0nV-bW-Nz7"/>
@@ -68,7 +68,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EYU-CU-BWW">
-                                <rect key="frame" x="62" y="295" width="250" height="40"/>
+                                <rect key="frame" x="62.5" y="295" width="250" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="4kI-Sy-mh3"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="gWM-gK-O8z"/>
@@ -187,7 +187,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="U0D-8u-pEL">
-                                <rect key="frame" x="88" y="258.5" width="200" height="150"/>
+                                <rect key="frame" x="87.5" y="258.5" width="200" height="150"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gH0-VH-Hb8">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="30"/>
@@ -197,6 +197,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="xJv-XG-9Cf" id="mv3-qd-jyN"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Slw-hV-NCb">
                                         <rect key="frame" x="0.0" y="60" width="200" height="30"/>
@@ -206,6 +209,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="xJv-XG-9Cf" id="hHM-re-sYk"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zff-TP-UQS">
                                         <rect key="frame" x="0.0" y="120" width="200" height="30"/>
@@ -355,7 +361,7 @@
                     <navigationItem key="navigationItem" title="On The Map" id="8yi-pb-9DO">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="mAN-3Y-6Va">
                             <connections>
-                                <action selector="Logout:" destination="8Ob-d6-Fak" id="TEI-vu-s68"/>
+                                <action selector="logout:" destination="8Ob-d6-Fak" id="TEI-vu-s68"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
@@ -372,7 +378,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="Table" destination="TNq-OJ-98p" id="LM7-6I-WAj"/>
+                        <outlet property="table" destination="TNq-OJ-98p" id="LM7-6I-WAj"/>
                         <segue destination="nFb-jv-js2" kind="presentation" identifier="Login" id="8qN-nL-0Ra"/>
                     </connections>
                 </tableViewController>

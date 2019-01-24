@@ -8,8 +8,9 @@
 
 import UIKit
 import CoreLocation
+import SVProgressHUD
 
-class InformationPostingViewViewController: UIViewController {
+class InformationPostingViewViewController: UIViewController,UITextFieldDelegate {
 
     var api = API()
     @IBOutlet var location: UITextField!
@@ -32,6 +33,8 @@ class InformationPostingViewViewController: UIViewController {
         
         let geocoder = CLGeocoder()
         let address = self.location.text
+            SVProgressHUD.show()
+
             geocoder.geocodeAddressString(address!, completionHandler: {(placemarks, error) -> Void in
             if((error) != nil){
                 self.alert(message: "The error is \(error!)")
@@ -44,6 +47,7 @@ class InformationPostingViewViewController: UIViewController {
                 iteminfo.longitude = coordinates.longitude
                 iteminfo.URL = self.URL.text
                 iteminfo.mapString = address
+                SVProgressHUD.dismiss()
                 self.navigationController?.pushViewController(iteminfo, animated: true)
             }
         })
@@ -58,6 +62,14 @@ class InformationPostingViewViewController: UIViewController {
             return
             
         }
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.resignFirstResponder()
+        self.view.endEditing(true)
+        return true
     }
     
 

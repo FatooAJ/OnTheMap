@@ -70,6 +70,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }
             else{
                  DispatchQueue.main.async() {
+                    self.navigationController?.popToRootViewController(true)
                     self.performSegue(withIdentifier: "table", sender: nil)}
             }
         }

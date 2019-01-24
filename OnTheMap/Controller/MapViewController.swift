@@ -27,7 +27,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // Here we create the annotation and set its coordiate, title, and subtitle properties
         let annotation = MKPointAnnotation()
         annotation.coordinate = coordinate
-        annotation.title = "\(User.UserInfo.firstname!) \(User.UserInfo.lastname!)"
+        annotation.title = "\(UserInfo.firstname!) \(UserInfo.lastname!)"
         annotation.subtitle = self.URL
         
         // Finally we place the annotation in an array of annotations.

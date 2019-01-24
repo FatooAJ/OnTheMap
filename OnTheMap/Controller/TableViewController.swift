@@ -57,7 +57,7 @@ class TableViewController: UITableViewController {
             for dictionary in locations {
                     if dictionary["firstName"] != nil && dictionary["lastName"] != nil && dictionary["mediaURL"] != nil {
                         let studentinfo = StudentData(dictionary: dictionary as NSDictionary)
-                        self.Student.addStudent(studentinfo: studentinfo)
+                        StrudentArray.shared.studentInfoArray.append(studentinfo)
                     }}
         }
         table.reloadData()
@@ -65,13 +65,13 @@ class TableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Student.studentInfoArray.count
+        return StrudentArray.shared.studentInfoArray.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! TableViewCell
-        let StudentCell = Student.studentInfoArray[indexPath.row]
+        let StudentCell = StrudentArray.shared.studentInfoArray[indexPath.row]
         
         cell.name!.text = "\(StudentCell.firstName)"+" "+"\(StudentCell.lastName)"
         cell.link?.text = StudentCell.mediaURL
@@ -80,7 +80,7 @@ class TableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        let Studentcell = Student.studentInfoArray[indexPath.row].mediaURL
+        let Studentcell = StrudentArray.shared.studentInfoArray[indexPath.row].mediaURL
 
         if let url = URL(string: Studentcell!)
         {

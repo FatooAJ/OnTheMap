@@ -24,11 +24,13 @@ import MapKit
 class ViewController: UIViewController, MKMapViewDelegate {
     
     var api = API()
-    var studentInfoArray = [StudentData]()
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        DispatchQueue.main.async() {
+        mapNetworking()
+        }
         }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -85,9 +87,10 @@ class ViewController: UIViewController, MKMapViewDelegate {
                     }}
             
             // When the array is complete, we add the annotations to the map.
-            self.mapView.addAnnotations(annotations)
             
         }
+        self.mapView.addAnnotations(annotations)
+
     }
     // MARK: - MKMapViewDelegate
 

@@ -33,7 +33,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
                 else{
                     if (JSON != "false"){
                         print(JSON)
-                    User.UserInfo.key = JSON
+                    UserInfo.key = JSON
                     DispatchQueue.main.async() {
                         self.performSegue(withIdentifier: "ToMap", sender: self)
                         }}

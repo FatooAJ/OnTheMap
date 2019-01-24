@@ -17,7 +17,7 @@ class InformationPostingViewViewController: UIViewController,UITextFieldDelegate
     @IBOutlet var URL: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        api.gettingUserData(userKey: User.UserInfo.key!)
+        api.gettingUserData(userKey: UserInfo.key!)
 
     }
 

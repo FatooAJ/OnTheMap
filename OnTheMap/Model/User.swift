@@ -8,13 +8,13 @@
 
 import Foundation
 
-class User{
 
-    struct UserInfo {
+
+struct UserInfo {
         static var key : String!
         static var firstname: String!
         static var lastname: String!
 
     }
     
-}
+

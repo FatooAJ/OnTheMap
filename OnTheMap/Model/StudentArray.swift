@@ -9,7 +9,7 @@
 import Foundation
 
 struct StrudentArray {
-    static let shared = StrudentArray()
+    static var shared = StrudentArray()
     var studentInfoArray = [StudentData]()
     
     init() {

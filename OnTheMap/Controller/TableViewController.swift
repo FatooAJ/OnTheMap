@@ -50,17 +50,29 @@ class TableViewController: UITableViewController {
         self.tabBarController?.dismiss(animated: true, completion: nil)
 
     }
-    
-    func mapNetworking(){
-        
-        api.getDataOfStudent { (locations) in
-            for dictionary in locations {
-                    if dictionary["firstName"] != nil && dictionary["lastName"] != nil && dictionary["mediaURL"] != nil {
-                        let studentinfo = StudentData(dictionary: dictionary as NSDictionary)
-                        StrudentArray.shared.studentInfoArray.append(studentinfo)
-                    }}
+    func alert(message:String){
+        DispatchQueue.main.async() {
+            let alert = UIAlertController(title: "OOPS", message:"\(message)", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default , handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+            
         }
-        table.reloadData()
+    }
+    func mapNetworking(){
+
+        api.getDataOfStudent { (locations,Error) in
+            if(Error.isEmpty){
+            if locations.firstName != nil && locations.lastName != nil && locations.mediaURL != nil {
+                
+
+                StrudentArray.shared.studentInfoArray.append(locations)
+
+                }}
+        else{
+            self.alert(message: Error)
+        }
+            self.table.reloadData()}
     }
     // MARK: - Table view data source
 

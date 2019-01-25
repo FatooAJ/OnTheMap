@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 class API {
     
     
@@ -54,10 +55,8 @@ class API {
         
         task.resume()
     }
-    var temp = [[String:Any]]()
-    func getDataOfStudent(completion: @escaping ([[String : Any]])->()) {
+    func getDataOfStudent(completion: @escaping (StudentData,_ error:String)->()) {
         
-        temp = [["":""]]
         var request = URLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation?limit=100&order=-updatedAt")!)
         request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
@@ -65,7 +64,7 @@ class API {
         let task = session.dataTask(with: request) { data, response, error in
             
             func displayError(_ error: String) {
-                print(error)
+                completion(StudentData.init(), error)
             }
             
             /* GUARD: Did we get a successful 2XX response? */
@@ -85,31 +84,20 @@ class API {
                 return
             }
             
-            do {
-                
-                let myJSON =  try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSDictionary
-                //getting the JSON array result from the response
-                let result = myJSON["results"] as! NSArray
-                var ALLData: NSDictionary
-                //looping through all the json objects in the array teams
-                for i in 0..<result.count {
-                    ALLData = result[i] as! NSDictionary
-                    self.temp.append(ALLData as! [String:Any])
-                    // print("-----------------------------------")
+
+                let myJSON =  try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSDictionary
+            let result: [NSDictionary] = myJSON["results"] as! [NSDictionary]
+                var studentData = [StudentData]()
+                for i in result {
+                    let studData = StudentData(dictionary: i)
+                        studentData.append(studData)
+                    completion(studData,"")
                 }
-                print(self.temp.count)
-                completion(self.temp)
-                //                print(Temp[0])
-                //                print(Temp[1])
-            } catch let err {
-                completion([["err":err]])
-            }
-            // print(String(data: data!, encoding: .utf8)!)
         }
         task.resume()
     }
     func gettingUserData(userKey:String!){
-        print("hhhhhhh\(userKey!)")
+        print("\(userKey!)")
         let request = URLRequest(url: URL(string: "https://onthemap-api.udacity.com/v1/users/\(userKey!)")!)
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
@@ -130,7 +118,7 @@ class API {
         task.resume()
     }
     func postingStudentLocation(mapString: String, MediaURL: String, latitude: Double, longitude: Double, completion: @escaping (Bool,Error?)->()){
-        print("{\"uniqueKey\": \"\(UserInfo.key!)\", \"firstName\": \"\(firstname!)\", \"lastName\": \"\(UserInfo.lastname!)\",\"mapString\": \"\(mapString)\", \"mediaURL\": \"\(MediaURL)\",\"latitude\": \(latitude), \"longitude\": \(longitude)}")
+        print("{\"uniqueKey\": \"\(UserInfo.key!)\", \"firstName\": \"\(UserInfo.firstname!)\", \"lastName\": \"\(UserInfo.lastname!)\",\"mapString\": \"\(mapString)\", \"mediaURL\": \"\(MediaURL)\",\"latitude\": \(latitude), \"longitude\": \(longitude)}")
         var request = URLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation")!)
         request.httpMethod = "POST"
         request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
@@ -170,4 +158,6 @@ class API {
         }
         task.resume()
     }
+
 }
+

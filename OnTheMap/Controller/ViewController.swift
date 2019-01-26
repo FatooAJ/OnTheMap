@@ -55,6 +55,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
     }
     func mapNetworking(){
+        
         api.getDataOfStudent { (locationa,Error)  in
             if (Error.isEmpty){
             var annotations = [MKPointAnnotation]()
@@ -64,7 +65,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
                 let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = coordinate
-                annotation.title = "\(locationa.firstName) \(locationa.lastName)"
+                annotation.title = "\(locationa.firstName!) \(locationa.lastName!)"
                 annotation.subtitle = locationa.mediaURL
                 annotations.append(annotation)
 

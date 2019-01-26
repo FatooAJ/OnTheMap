@@ -60,7 +60,7 @@ class TableViewController: UITableViewController {
         }
     }
     func mapNetworking(){
-
+        StrudentArray.shared.studentInfoArray.removeAll()
         api.getDataOfStudent { (locations,Error) in
             if(Error.isEmpty){
             if locations.firstName != nil && locations.lastName != nil && locations.mediaURL != nil {
@@ -85,7 +85,7 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! TableViewCell
         let StudentCell = StrudentArray.shared.studentInfoArray[indexPath.row]
         
-        cell.name!.text = "\(StudentCell.firstName)"+" "+"\(StudentCell.lastName)"
+        cell.name!.text = "\(StudentCell.firstName!)"+" "+"\(StudentCell.lastName!)"
         cell.link?.text = StudentCell.mediaURL
 
         return cell

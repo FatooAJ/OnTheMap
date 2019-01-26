@@ -75,7 +75,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="nFb-jv-js2" id="VWe-9L-Pl1"/>
                                 </connections>
@@ -322,7 +322,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iG8-7i-KpH">
-                                            <rect key="frame" x="80" y="11" width="103" height="21"/>
+                                            <rect key="frame" x="80" y="11" width="279" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -340,7 +340,7 @@
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OY8-BU-L5w" secondAttribute="trailing" constant="20" symbolic="YES" id="7pT-4N-AAx"/>
                                         <constraint firstItem="OY8-BU-L5w" firstAttribute="bottom" secondItem="CRW-PC-rz7" secondAttribute="bottomMargin" id="ILL-Lt-CUj"/>
                                         <constraint firstItem="OY8-BU-L5w" firstAttribute="leading" secondItem="JAV-KM-RFm" secondAttribute="trailing" constant="18" id="KLW-Dt-DvP"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="iG8-7i-KpH" secondAttribute="trailing" constant="176" id="LRm-Ls-Iow"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="iG8-7i-KpH" secondAttribute="trailing" id="LRm-Ls-Iow"/>
                                         <constraint firstItem="JAV-KM-RFm" firstAttribute="leading" secondItem="CRW-PC-rz7" secondAttribute="leadingMargin" constant="4" id="RU6-G5-8hD"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="JAV-KM-RFm" secondAttribute="bottom" constant="8" id="RXI-Dh-G3Q"/>
                                         <constraint firstItem="JAV-KM-RFm" firstAttribute="top" secondItem="CRW-PC-rz7" secondAttribute="topMargin" id="qtP-yc-I9z"/>
@@ -459,6 +459,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="Hhz-wj-Feu"/>
         <segue reference="xDa-MC-90k"/>
-        <segue reference="3Kb-9o-Wsj"/>
+        <segue reference="8qN-nL-0Ra"/>
     </inferredMetricsTieBreakers>
 </document>
